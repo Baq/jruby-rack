@@ -43,7 +43,7 @@ public class RackTag extends TagSupport {
                     @Override public String getQueryString() { return params; }
                     @Override public String getServletPath() { return ""; }
                 };
-                RackResponse result = app.call(new ServletRackEnvironment(request, context));
+                RackResponse result = app.call(new ServletRackEnvironment(request, (HttpServletResponse) pageContext.getResponse(), context));
                 pageContext.getOut().write(result.getBody());
             } finally {
               factory.finishedWithApplication(app);
